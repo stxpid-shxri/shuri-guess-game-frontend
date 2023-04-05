@@ -1,0 +1,168 @@
+{
+  "version": "0.1.0",
+  "name": "guess_number",
+  "instructions": [
+    {
+      "name": "initialize",
+      "accounts": [
+        {
+          "name": "master",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "user",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "amount",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "deposit",
+      "accounts": [
+        {
+          "name": "master",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "user",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "amount",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "create",
+      "accounts": [
+        {
+          "name": "game",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "user",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "randomNumber",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "play",
+      "accounts": [
+        {
+          "name": "game",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "master",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "user",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "selectedNumber",
+          "type": "u64"
+        },
+        {
+          "name": "bet",
+          "type": "u64"
+        }
+      ]
+    }
+  ],
+  "accounts": [
+    {
+      "name": "Master",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "balance",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Game",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "randomNumber",
+            "type": "u64"
+          },
+          {
+            "name": "owner",
+            "type": "publicKey"
+          },
+          {
+            "name": "isWin",
+            "type": "bool"
+          }
+        ]
+      }
+    }
+  ],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "WinnerAlready",
+      "msg": "Winner already"
+    },
+    {
+      "code": 6001,
+      "name": "Mistmatch",
+      "msg": "Mismatch"
+    }
+  ],
+  "metadata": {
+    "address": "CKWtwTziPzvp7VAVi8tbbBurWbSaG4Fx5icGdbs2n5ck"
+  }
+}
